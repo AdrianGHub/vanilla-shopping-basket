@@ -20,7 +20,7 @@ function updatePrice(e) {
     const currency = 'zł';
     let total = 0;
     productsQuantity.forEach(product => total += getTotalProductPrice(product));
-    totalPrice.textContent = `${total} ${currency}`;
+    totalPrice.textContent = `${total.toFixed(2)} ${currency}`;
 }
 
 
@@ -28,7 +28,8 @@ function getTotalProductPrice(e) {
     if(e.value < 1) e.value = 1;
     const itemAmount = e.value
     const itemPrice = e.parentNode.nextElementSibling.textContent.replace(/[^0-9\.]+/g, '');
-    return parseInt(itemAmount * itemPrice);
+    const multipliedPrice = parseFloat(itemAmount * itemPrice)
+    return multipliedPrice;
   }
 
 removeProductButtons.forEach(btn => btn.addEventListener('click', removeProduct));
@@ -36,3 +37,5 @@ removeProductButtons.forEach(btn => btn.addEventListener('click', removeProduct)
 productsQuantity.forEach(amount => {
     amount.addEventListener('change', updatePrice)
   })
+
+// purchaseButton.addEventListener('click');
