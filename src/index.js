@@ -19,7 +19,7 @@ function removeProduct(e) {
 }
 
 
-function updatePrice(e) {
+function updatePrice() {
     const currency = 'zł';
     let total = 0;
     productsQuantity.forEach(product => total += getTotalProductPrice(product));
@@ -64,6 +64,7 @@ function checkBasketAlerts(alertFlag) {
             alertPopup.lastElementChild.textContent = 'Dokonałeś właściwego wyboru!';
             productsQuantity.length !== 0
             ? alertPopup.style.display = 'block' : null;
+            removeProductButtons.forEach(btn => btn.style.display = 'none');
             setInterval(() => {
                 alertPopup.style.display = 'none';
                 document.querySelectorAll('.product--js').forEach(product => product.innerHTML = '');

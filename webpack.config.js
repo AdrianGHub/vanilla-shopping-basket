@@ -7,13 +7,10 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
 
 	mode: 'development',
-	entry: {
-		main: './src/index.js',
-	  },
+	entry: './src/index.js',
 	output: {
 		path: path.resolve(__dirname, "dist"),
-		filename: "[name].bundle.js",
-		publicPath: "/",
+		filename: "[name].bundle.js"
 	},
 
 	devServer: {
@@ -39,12 +36,6 @@ module.exports = {
 
 	plugins: [
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
-		new webpack.HotModuleReplacementPlugin(),
-		new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: "[name].css",
-			chunkFilename: "[id].css",
-		}),
+		new webpack.HotModuleReplacementPlugin()
 	],
 };
